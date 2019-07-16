@@ -1,0 +1,23 @@
+
+{{# each products}}
+    <div class = "row">
+{{# each this}}
+        <div class = "col-sm-6 col-md-3">
+            <div class = "thumbnail">
+                <img src = "{{ this.imagePath}}" class="img-responsive">
+            </div>
+
+            <div class = "caption">
+                <h3>{{this.title}}</h3>
+                <p class="description">{{this.description}}</p>
+
+                <div>
+                    <div class="price">${{this.price}}</div>
+                    <div><a href = "#" class = "btn btn-success float-right" role = "button">Buy Now</a></div>
+
+                </div>
+            </div>
+        </div>
+{{/each}}
+    </div>
+{{/ each}}

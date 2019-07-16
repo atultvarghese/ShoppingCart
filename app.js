@@ -3,16 +3,19 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var expressHbs = require('express-handlebars');
+var mongoose = require('mongoose');
+
 
 var indexRouter = require('./routes/index');
 
+mongoose.connect('mongodb://localhost:27017/shop',{useNewUrlParser:true});
+
 
 var app = express();
+app.engine('.hbs', expressHbs({defaultLayout:'layout', extname: '.hbs'}));
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
-
+app.set('view engine', '.hbs');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
