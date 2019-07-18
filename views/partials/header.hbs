@@ -5,32 +5,27 @@
     </button>
 
     <div class="collapse navbar-collapse"  id="navbarSupportedContent">
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-        <ul class="navbar-nav float-right">
-            <li class="nav-item active">
-                <a class="nav-link " href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
+<!--        <form class="form-inline my-2 my-lg-0">-->
+<!--            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
+<!--            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+<!--        </form>-->
+        <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i> ShoppingCart</a>
+                <a class="nav-link" href="#">
+                    <i class="fas fa-shopping-cart"></i> ShoppingCart</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Dropdown
-                </a>
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i> User Management</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    {{# if login}}
+                        <a class="dropdown-item" href="/user/profile">Profile</a>
+                        <a class="dropdown-item" href="/user/logout">Logout</a>
+                    {{ else }}
+                        <a class="dropdown-item" href="/user/signup">Sign Up</a>
+                        <a class="dropdown-item" href="/user/signin">Sign In</a>
+                    {{/if}}
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link float-right " href="#" ><i class="fas fa-user"></i> User</a>
-            </li>
         </ul>
-
     </div>
 </nav>

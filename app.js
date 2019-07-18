@@ -11,6 +11,7 @@ var flash = require('connect-flash');
 var validator = require('express-validator');
 
 var indexRouter = require('./routes/index');
+var userRouter = require('./routes/user');
 
 mongoose.connect('mongodb://localhost:27017/shop',{useNewUrlParser:true});
 require('./config/passport');
@@ -30,6 +31,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(function (req, res, next) {
+  res.locals.login = req.isAuthenticated();
+  next();
+});
+
+app.use('/user', userRouter);
 app.use('/', indexRouter);
 
 
